@@ -1,16 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.auth_front.HelloController">
+<VBox spacing="12.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.auth_front.HelloController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="14.0" left="14.0" right="14.0" top="14.0"/>
     </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <Label text="Client JavaFX" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+    <HBox spacing="8.0">
+        <Label text="Backend URL"/>
+        <TextField fx:id="backendUrlField" prefWidth="420.0"/>
+    </HBox>
+
+    <Separator/>
+
+    <Label text="Inscription"/>
+    <HBox spacing="8.0">
+        <TextField fx:id="registerEmailField" promptText="Email" prefWidth="230.0"/>
+        <PasswordField fx:id="registerPasswordField" promptText="Mot de passe" prefWidth="180.0"/>
+        <PasswordField fx:id="registerConfirmField" promptText="Confirmation" prefWidth="180.0"/>
+        <Button text="S'inscrire" onAction="#onRegisterClick"/>
+    </HBox>
+    <Label fx:id="registerStrengthLabel" textFill="FIREBRICK"/>
+    <Label fx:id="registerStatusLabel" textFill="GRAY"/>
+
+    <Separator/>
+
+    <Label text="Connexion"/>
+    <HBox spacing="8.0">
+        <TextField fx:id="loginEmailField" promptText="Email" prefWidth="230.0"/>
+        <PasswordField fx:id="loginPasswordField" promptText="Mot de passe" prefWidth="180.0"/>
+        <Button text="Se connecter" onAction="#onLoginClick"/>
+    </HBox>
+    <HBox spacing="8.0">
+        <Label text="Token:"/>
+        <Label fx:id="tokenLabel" text="-"/>
+        <Button text="Effacer token" onAction="#onClearTokenClick"/>
+    </HBox>
+    <Label fx:id="loginStatusLabel" textFill="GRAY"/>
+
+    <Separator/>
+
+    <Label text="Profil (/api/auth/me)"/>
+    <HBox spacing="8.0">
+        <Button text="Charger profil" onAction="#onLoadProfileClick"/>
+        <Label text="Email:"/>
+        <Label fx:id="profileEmailLabel" text="-"/>
+    </HBox>
+    <HBox spacing="8.0">
+        <Label text="CreatedAt:"/>
+        <Label fx:id="profileCreatedAtLabel" text="-"/>
+    </HBox>
+    <Label fx:id="profileStatusLabel" textFill="GRAY"/>
 </VBox>
